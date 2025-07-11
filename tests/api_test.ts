@@ -4,7 +4,6 @@ import {
   assertMatch,
 } from "jsr:@std/assert";
 
-// Adjust this if your API port or host is different
 const baseUrl = "http://localhost:8000";
 
 Deno.test("GET /books should return an array", async () => {
@@ -36,7 +35,7 @@ Deno.test("POST /books should add a book", async () => {
 });
 
 Deno.test("GET /books/:id should return a book", async () => {
-  // First, add a book
+
   const book = {
     title: "Lookup Test",
     author: "Author A",
@@ -60,7 +59,7 @@ Deno.test("GET /books/:id should return a book", async () => {
 });
 
 Deno.test("PUT /books/:id should update a book", async () => {
-  // Create book
+
   const book = {
     title: "Old Title",
     author: "Old Author",
@@ -74,7 +73,7 @@ Deno.test("PUT /books/:id should update a book", async () => {
 
   const created = await createRes.json();
 
-  // Update it
+  
   const updated = {
     title: "New Title",
     author: "New Author",
@@ -93,7 +92,7 @@ Deno.test("PUT /books/:id should update a book", async () => {
 });
 
 Deno.test("DELETE /books/:id should remove a book", async () => {
-  // Create book
+  
   const book = {
     title: "To Be Deleted",
     author: "Author X",
@@ -107,7 +106,6 @@ Deno.test("DELETE /books/:id should remove a book", async () => {
 
   const created = await createRes.json();
 
-  // Delete it
   const deleteRes = await fetch(`${baseUrl}/books/${created.id}`, {
     method: "DELETE",
   });
