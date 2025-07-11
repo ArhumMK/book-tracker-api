@@ -73,7 +73,6 @@ Deno.test("PUT /books/:id should update a book", async () => {
 
   const created = await createRes.json();
 
-  
   const updated = {
     title: "New Title",
     author: "New Author",
