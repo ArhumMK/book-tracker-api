@@ -2,10 +2,8 @@ import type { RouterContext } from "oak";
 import books from "../data/books.json" with { type: "json" };
 import { validateBook } from "../utils/validate.ts";
 
-// We store the book data in memory for now
 let data = books;
 
-// Get all books (no params needed)
 export const getBooks = (ctx: RouterContext<"/books">) => {
   ctx.response.body = data;
 };
@@ -21,7 +19,7 @@ export const getBook = (ctx: RouterContext<"/books/:id">) => {
   }
 };
 
-// Add a new book (no route param)
+// Add a new book
 export const addBook = async (ctx: RouterContext<"/books">) => {
   const body = await ctx.request.body().value;
   const { title, author } = body;
